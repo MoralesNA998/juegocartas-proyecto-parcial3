@@ -1,0 +1,6 @@
+#ifndef JUEGO_CARTAS_BARAJAS_INDEX_H
+#define JUEGO_CARTAS_BARAJAS_INDEX_H
+
+#include "Baraja.h"
+
+#endif // JUEGO_CARTAS_BARAJAS_INDEX_H
