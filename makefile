@@ -6,3 +6,6 @@ EXE := bin/$(PROYECTO)
 
 $(EXE) : src/main.cpp
 	$(CXX) $< -o $@ $(LIB) $(INCLUDE) -std=c++17
+	
+run : $(EXE)
+	./$<
