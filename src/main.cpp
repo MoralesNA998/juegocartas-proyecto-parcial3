@@ -1,19 +1,9 @@
-#pragma once
-#include <iostream>
-#include "Baraja.hpp"
-#include "21.cpp"
-using namespace std;
+#include "Juego.h"
+#include <ftxui/component/screen_interactive.hpp>
 
-main{
-    int d;
-    cout << "Bienvenido, que desea jugar?" << endl;
-    cout << "1. 21 " << "2. Solitario ";
-    cin >> d;
-    if(d=1){
-        21.21.cpp;
-    }
-    else{
-
-    }
-    return 0
+int main() {
+    auto screen = ftxui::ScreenInteractive::TerminalOutput();
+    Juego juego;
+    screen.Loop(juego.Render());
+    return 0;
 }
