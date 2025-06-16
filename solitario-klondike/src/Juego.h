@@ -1,6 +1,6 @@
 #pragma once
 #include "Tablero.h"
-#include <ftxui/component/component.hpp>
+#include <ftxui/include/component/component.hpp>
 
 class Juego {
 public:
