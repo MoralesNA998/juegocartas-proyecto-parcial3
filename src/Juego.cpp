@@ -1,6 +1,7 @@
 #include "Juego.h"
 #include <ftxui/component/component.hpp>
 #include <ftxui/dom/elements.hpp>
+#include <ftxui/component/event.hpp>
 using namespace ftxui;
 
 Juego::Juego() {
@@ -65,7 +66,7 @@ Component Juego::Render() {
         });
     });
 
-    auto input = CatchEvent(render, [&](Event event) {
+    auto input = CatchEvent(render, [&](const ftxui::Event& event) -> bool {
         if (victoria && event != Event::Character('r')) return false;
 
         if (event == Event::Character('r')) {
