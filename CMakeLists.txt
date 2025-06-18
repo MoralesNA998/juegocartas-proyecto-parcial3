@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 3.14)
 project(Solitario)
 
-# Use C++17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Fetch FTXUI from your local directory (you already cloned it)
-add_subdirectory(FTXUI)
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-# Define your executable
 add_executable(programa
     src/main.cpp
     src/Carta.cpp
@@ -17,8 +14,5 @@ add_executable(programa
     src/Juego.cpp
 )
 
-# Add include directory
 target_include_directories(programa PRIVATE include)
-
-# Link with FTXUI
-target_link_libraries(programa PRIVATE ftxui::component ftxui::screen ftxui::dom)
+target_link_libraries(programa PRIVATE sfml-graphics sfml-window sfml-system)
