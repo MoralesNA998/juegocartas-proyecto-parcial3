@@ -1,0 +1,85 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+}
+title Diagrama de Clases - Juego de Cartas (solo "usa")
+
+enum Palo {
+  Corazones
+  Diamantes
+  Tréboles
+  Picas
+}
+
+class Carta {
+  - Valor : int
+  - Palo : Palo
+  - BocaArriba : bool
+  + Carta(Valor : int, Palo : Palo, BocaArriba : bool = false)
+  + ATexto() : string
+  + ObtenerColor() : string
+}
+
+class Baraja {
+  - Cartas : vector<Carta>
+  + Baraja()
+  + Barajar() : void
+  + EstaVacia() : bool
+  + Robar() : Carta
+  + PonerAbajo(Carta) : void
+  + Tamano() : size_t
+}
+
+class Tablero {
+  - Columnas : vector<vector<Carta>>
+  - Fundaciones : vector<vector<Carta>>
+  - Descarte : vector<Carta>
+  - Baraja : Baraja
+  + Tablero()
+  + Repartir() : void
+  + MoverColumnaAColumna(Origen : int, Destino : int, Cantidad : int) : bool
+  + MoverColumnaAFundacion(Origen : int) : bool
+  + MoverDescarteAColumna(Destino : int) : bool
+  + MoverDescarteAFundacion() : bool
+  + ComprobarVictoria() : bool
+  + RobarDeLaBaraja() : void
+  + ReciclarDescarte() : void
+}
+
+class Juego {
+  - Tablero : Tablero
+  - ColumnaSeleccionada : int
+  - FilaSeleccionada : int
+  - EstaSeleccionando : bool
+  - ColumnaOrigen : int
+  - FilaOrigen : int
+  - Mensaje : string
+  - Victoria : bool
+  - Fuente : Fuente <<externa>>
+  - TexturasDeCartas : map<string, Textura> <<externa>>
+  + Juego()
+  + Reiniciar() : void
+  + Dibujar(Ventana : Ventana) : void
+  + ManejarEntrada(Tecla : Tecla) : void
+}
+
+class Fuente <<externa>>
+class Textura <<externa>>
+class Ventana <<externa>>
+class Tecla <<externa>>
+
+Carta --> "1" Palo : usa
+Baraja *-- "*" Carta
+Tablero *-- "1" Baraja
+Tablero --> "*" Carta
+Juego --> "1" Tablero
+Juego --> Fuente : usa
+Juego --> Textura : usa
+Juego --> Ventana : usa
+Juego --> Tecla : usa
+
+@enduml
