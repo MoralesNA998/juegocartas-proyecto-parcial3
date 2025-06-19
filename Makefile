@@ -1,4 +1,5 @@
-CXX := g++
+CXX := /c/msys64/mingw64/bin/g++.exe
+
 CXXFLAGS := -std=c++17 -Wall -Iinclude -IC:/msys64/mingw64/include
 
 LDFLAGS := -LC:/msys64/mingw64/lib -lsfml-graphics -lsfml-window -lsfml-system

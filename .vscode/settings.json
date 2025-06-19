@@ -1,16 +1,10 @@
 {
-    "makefile.configureOnOpen": true,
     "terminal.integrated.profiles.windows": {
-        "MSYS2 MinGW64": {
-            "path": "C:\\msys64\\mingw64\\usr\\bin\\bash.exe",
-            "args": ["--login", "-i"],
-            "env": {
-                "MSYSTEM": "MINGW64",
-                "CHERE_INVOKING": "1"
-            }
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "MSYS2 MinGW64",
-    "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
-    "terminal.integrated.shellArgs.windows": ["--login", "-i"]
+    "MinGW64": {
+        "path": "C:\\msys64\\usr\\bin\\bash.exe",
+        "args": ["--login", "-i"],
+        "icon": "terminal-bash"
+    }
+},
+"terminal.integrated.defaultProfile.windows": "MinGW64",
 }

@@ -20,7 +20,7 @@ void Tablero::repartir() {
 
 bool Tablero::mover_col_a_col(int from, int to, int cantidad) {
     if (from < 0 || from >= 7 || to < 0 || to >= 7 || from == to) return false;
-    if (columnas[from].size() < cantidad) return false;
+    if (columnas[from].size() < static_cast<size_t>(cantidad)) return false;
     auto it = columnas[from].end() - cantidad;
     if (!it->boca_arriba) return false;
 

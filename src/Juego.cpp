@@ -1,5 +1,6 @@
 #include "Juego.h"
 #include <filesystem>
+#include <iostream>
 
 Juego::Juego() {
     Reiniciar();
@@ -66,12 +67,21 @@ void Juego::Draw(sf::RenderWindow& window) {
 }
 
 void Juego::LoadAssets() {
-    std::string path = "assets/cards/";
+    std::string path = "assets";
     for (const auto& entry : std::filesystem::directory_iterator(path)) {
-        std::string name = entry.path().stem().string(); // e.g. "2H"
+        if (!entry.is_regular_file()) continue;
+
+        std::string filename = entry.path().filename().string();
+        if (entry.path().extension() != ".png") continue;
+
+        std::string key = entry.path().stem().string();  // e.g., "card_spades_02"
+
         sf::Texture tex;
-        tex.loadFromFile(entry.path().string());
-        card_textures[name] = tex;
+        if (tex.loadFromFile(entry.path().string())) {
+            card_textures[key] = tex;
+        } else {
+            std::cerr << "Failed to load image: " << entry.path() << '\n';
+        }
     }
 }
 

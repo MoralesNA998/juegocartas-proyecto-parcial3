@@ -35,7 +35,7 @@ solitario-klondike
 Para compilar el proyecto, navega al directorio del proyecto y ejecuta:
 
 ```
-make
+make clean && make && ./programa
 ```
 
 Esto generará el ejecutable en el directorio `bin`.
