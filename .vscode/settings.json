@@ -2,7 +2,7 @@
     "makefile.configureOnOpen": true,
     "terminal.integrated.profiles.windows": {
         "MSYS2 MinGW64": {
-            "path": "C:\\msys64\\usr\\bin\\bash.exe",
+            "path": "C:\\msys64\\mingw64\\usr\\bin\\bash.exe",
             "args": ["--login", "-i"],
             "env": {
                 "MSYSTEM": "MINGW64",
@@ -11,6 +11,6 @@
         }
     },
     "terminal.integrated.defaultProfile.windows": "MSYS2 MinGW64",
-    "terminal.integrated.allowWorkspaceConfiguration": true,
-    "terminal.integrated.detectedProfiles.windows": {}
+    "terminal.integrated.shell.windows": "C:\\msys64\\usr\\bin\\bash.exe",
+    "terminal.integrated.shellArgs.windows": ["--login", "-i"]
 }
