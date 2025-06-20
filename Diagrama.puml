@@ -85,5 +85,4 @@ Juego --> Fuente : usa
 Juego --> Textura : usa
 Juego --> Ventana : usa
 Juego --> Tecla : usa
-
 @enduml
