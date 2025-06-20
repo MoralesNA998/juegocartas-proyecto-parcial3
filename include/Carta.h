@@ -12,4 +12,5 @@ public:
     Carta(int v, Palo p, bool b = false);
     std::string str() const;
     std::string color() const;
+    std::string key() const;
 };

@@ -20,12 +20,15 @@ void Juego::Reiniciar() {
 }
 
 void Juego::HandleInput(sf::Keyboard::Key key) {
+     std::cout << "Key pressed: " << key << "\n";
     if (victoria && key != sf::Keyboard::R) return;
 
     if (key == sf::Keyboard::R) {
+        std::cout << "Restarting game\n";
         Reiniciar();
     } else if (key == sf::Keyboard::Left && sel_col > 0) {
         sel_col--;
+        std::cout << "sel_col: " << sel_col << "\n";
     } else if (key == sf::Keyboard::Right && sel_col < 6) {
         sel_col++;
     } else if (key == sf::Keyboard::Up && sel_row > 0) {
@@ -56,10 +59,19 @@ void Juego::Draw(sf::RenderWindow& window) {
             sf::Sprite sprite = GetCardSprite(carta);
             sprite.setPosition(x_offset + col * 100, y_offset + row * 30);
             window.draw(sprite);
+
+            // Draw selection rectangle
+            if (col == sel_col && row == sel_row) {
+                sf::RectangleShape rect(sf::Vector2f(sprite.getLocalBounds().width, sprite.getLocalBounds().height));
+                rect.setPosition(sprite.getPosition());
+                rect.setFillColor(sf::Color::Transparent);
+                rect.setOutlineColor(sf::Color::Yellow);
+                rect.setOutlineThickness(3);
+                window.draw(rect);
+            }
         }
     }
 
-    // Draw selection indicator, message, etc. (can be improved)
     sf::Text msg(mensaje, font, 20);
     msg.setFillColor(sf::Color::White);
     msg.setPosition(10, 10);
@@ -71,10 +83,9 @@ void Juego::LoadAssets() {
     for (const auto& entry : std::filesystem::directory_iterator(path)) {
         if (!entry.is_regular_file()) continue;
 
-        std::string filename = entry.path().filename().string();
         if (entry.path().extension() != ".png") continue;
 
-        std::string key = entry.path().stem().string();  // e.g., "card_spades_02"
+        std::string key = entry.path().stem().string();  // e.g., "10H", "AS", etc.
 
         sf::Texture tex;
         if (tex.loadFromFile(entry.path().string())) {
@@ -86,7 +97,7 @@ void Juego::LoadAssets() {
 }
 
 sf::Sprite Juego::GetCardSprite(const Carta& carta) {
-    std::string name = carta.str(); // should return "2H", "AS", etc.
+    std::string name = carta.key(); // should return "2H", "AS", etc.
     if (!carta.boca_arriba)
         name = "back"; // back.png for face-down
 
