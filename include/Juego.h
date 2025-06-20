@@ -8,7 +8,7 @@ public:
     void Reiniciar();
 
     void Draw(sf::RenderWindow& window);
-    void HandleInput(sf::Keyboard::Key key);
+    void handleInput(sf::Keyboard::Key key);
 
 private:
     Tablero tablero;
@@ -23,6 +23,6 @@ private:
     sf::Font font;
     std::map<std::string, sf::Texture> card_textures;
 
-    void LoadAssets();
-    sf::Sprite GetCardSprite(const Carta& carta);
+    void loadAssets();
+    sf::Sprite getCardSprite(const Carta& carta);
 };

@@ -10,6 +10,6 @@ public:
     void barajar();
     bool vacio() const;
     Carta robar();
-    void poner_abajo(const Carta& c);
+    void poner_Abajo(const Carta& c);
     size_t tam() const;
 };

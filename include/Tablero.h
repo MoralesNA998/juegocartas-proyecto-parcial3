@@ -12,11 +12,11 @@ public:
 
     Tablero();
     void repartir();
-    bool mover_col_a_col(int from, int to, int cantidad);
-    bool mover_col_a_fund(int from);
-    bool mover_descarte_a_col(int to);
-    bool mover_descarte_a_fund();
+    bool mover_Col_a_Col(int from, int to, int cantidad);
+    bool mover_Col_a_Fund(int from);
+    bool mover_Descarte_a_Col(int to);
+    bool mover_Descarte_a_Fund();
     bool victoria() const;
-    void robar_mazo();
-    void reciclar_descarte();
+    void robar_Mazo();
+    void reciclar_Descarte();
 };
