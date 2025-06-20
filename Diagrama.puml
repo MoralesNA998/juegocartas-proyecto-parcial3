@@ -79,8 +79,8 @@ class Tecla
 Carta --> Palo : usa
 Baraja *-- Carta : tiene
 Tablero *-- Baraja : tiene
-Tablero --> Carta : tiene
-Juego --> Tablero : tiene
+Tablero --* Carta : tiene
+Juego --* Tablero : tiene
 Juego --> Fuente : usa
 Juego --> Textura : usa
 Juego --> Ventana : usa
